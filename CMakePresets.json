@@ -1,0 +1,38 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "windows-msvc",
+      "displayName": "Windows MSVC",
+      "binaryDir": "build/msvc",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64"
+    },
+    {
+      "name": "windows-mingw",
+      "displayName": "Windows MinGW",
+      "binaryDir": "build/mingw",
+      "generator": "MinGW Makefiles"
+    },
+    {
+      "name": "unix-default",
+      "displayName": "Unix / macOS",
+      "binaryDir": "build",
+      "generator": "Unix Makefiles"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-msvc",
+      "configurePreset": "windows-msvc"
+    },
+    {
+      "name": "windows-mingw",
+      "configurePreset": "windows-mingw"
+    },
+    {
+      "name": "unix-default",
+      "configurePreset": "unix-default"
+    }
+  ]
+}

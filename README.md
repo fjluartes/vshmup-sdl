@@ -1,0 +1,29 @@
+# SDL2 Vertical Shmup
+
+Vertical shoot-em-up game in SDL2 (Shooter 02).
+
+From [Parallel Realities SDL2 tutorial](https://www.parallelrealities.co.uk/tutorials/)
+
+## SETUP
+- Add CMakeLists.txt from previous projects (my-shmup-01)
+- Add CMakePresets.json
+- Create build.sh, build.bat
+
+## TODO
+- [ ] Enemy attack patterns (first sequence)
+- [ ] Power-ups
+- [ ] Return fire
+- [ ] Enemy attack patterns (full sequence)
+- [ ] Bosses
+- [ ] More power-ups
+- [ ] Enemy attack patterns (final sequence)
+- [ ] Finishing touches
+
+## DONE
+
+- [x] Setting up
+
+## STRETCH GOALS
+- [ ] New enemy attack pattern
+- [ ] New stage
+- [ ] New boss
