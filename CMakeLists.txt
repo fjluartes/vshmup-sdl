@@ -42,6 +42,10 @@ if(MSVC)
 
     target_link_options(${PROJECT_NAME} PRIVATE /SUBSYSTEM:WINDOWS)
 
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
+        _CRT_SECURE_NO_WARNINGS
+    )
+
     target_compile_options(${PROJECT_NAME} PRIVATE
         /W4
         /WX
@@ -49,7 +53,15 @@ if(MSVC)
         /wd4244   # float/int conversion
         /wd4305   # double to float
         /wd4996   # unsafe CRT functions
-        /wd4267   # size_t to int
+        /wd4232   # dllimport address (cJSON malloc/free)
+        /wd4267   # size_t to int (cJSON, text.c)
+        /wd4018   # signed/unsigned mismatch (main.c)
+        /wd4702   # unreachable code (entityFactory.c)
+    )
+
+    # cJSON is third-party — give it its own relaxed flags
+    set_source_files_properties(src/json/cJSON.c PROPERTIES
+        COMPILE_OPTIONS "/W0"  # silence all warnings for this file
     )
 
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD

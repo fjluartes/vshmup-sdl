@@ -5,7 +5,7 @@ Vertical shoot-em-up game in SDL2 (Shooter 02).
 From [Parallel Realities SDL2 tutorial](https://www.parallelrealities.co.uk/tutorials/)
 
 ## SETUP
-- Add CMakeLists.txt from previous projects (my-shmup-01)
+- Add CMakeLists.txt from previous projects (map-editor)
 - Add CMakePresets.json
 - Create build.sh, build.bat
 
@@ -20,7 +20,6 @@ From [Parallel Realities SDL2 tutorial](https://www.parallelrealities.co.uk/tuto
 - [ ] Finishing touches
 
 ## DONE
-
 - [x] Setting up
 
 ## STRETCH GOALS
