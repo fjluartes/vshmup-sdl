@@ -1,0 +1,370 @@
+[
+	{
+		"filename" : "gfx/shooter-2.png",
+		"x" : 0,
+		"y" : 0,
+		"w" : 322,
+		"h" : 86,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/shooter-1.png",
+		"x" : 0,
+		"y" : 87,
+		"w" : 322,
+		"h" : 86,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/2.png",
+		"x" : 323,
+		"y" : 0,
+		"w" : 75,
+		"h" : 84,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/sdl2.png",
+		"x" : 0,
+		"y" : 174,
+		"w" : 377,
+		"h" : 84,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/shield.png",
+		"x" : 399,
+		"y" : 0,
+		"w" : 75,
+		"h" : 75,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/redAlien.png",
+		"x" : 323,
+		"y" : 87,
+		"w" : 80,
+		"h" : 72,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/yellowAlien.png",
+		"x" : 404,
+		"y" : 87,
+		"w" : 80,
+		"h" : 72,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/blueAlien.png",
+		"x" : 378,
+		"y" : 174,
+		"w" : 80,
+		"h" : 72,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/greenAlien.png",
+		"x" : 0,
+		"y" : 259,
+		"w" : 80,
+		"h" : 72,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/explosion06.png",
+		"x" : 81,
+		"y" : 259,
+		"w" : 69,
+		"h" : 69,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/explosion07.png",
+		"x" : 151,
+		"y" : 259,
+		"w" : 66,
+		"h" : 66,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/explosion08.png",
+		"x" : 218,
+		"y" : 259,
+		"w" : 66,
+		"h" : 66,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/explosion09.png",
+		"x" : 285,
+		"y" : 259,
+		"w" : 66,
+		"h" : 66,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/explosion05.png",
+		"x" : 352,
+		"y" : 259,
+		"w" : 63,
+		"h" : 57,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/explosion04.png",
+		"x" : 416,
+		"y" : 259,
+		"w" : 63,
+		"h" : 57,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/supplyShip.png",
+		"x" : 0,
+		"y" : 332,
+		"w" : 90,
+		"h" : 54,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/player.png",
+		"x" : 459,
+		"y" : 174,
+		"w" : 44,
+		"h" : 50,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/littleBlueAlien.png",
+		"x" : 91,
+		"y" : 332,
+		"w" : 48,
+		"h" : 48,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/littleGreyAlien.png",
+		"x" : 140,
+		"y" : 332,
+		"w" : 48,
+		"h" : 48,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/littleOrangeAlien.png",
+		"x" : 189,
+		"y" : 332,
+		"w" : 48,
+		"h" : 48,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/littleYellowAlien.png",
+		"x" : 238,
+		"y" : 332,
+		"w" : 48,
+		"h" : 48,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/littlePinkAlien.png",
+		"x" : 287,
+		"y" : 332,
+		"w" : 48,
+		"h" : 48,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/speedPowerUpPod.png",
+		"x" : 336,
+		"y" : 332,
+		"w" : 46,
+		"h" : 46,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/reloadRatePowerUpPod.png",
+		"x" : 383,
+		"y" : 332,
+		"w" : 46,
+		"h" : 46,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/dronePowerUpPod.png",
+		"x" : 430,
+		"y" : 332,
+		"w" : 46,
+		"h" : 46,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/sidearmPowerUpPod.png",
+		"x" : 0,
+		"y" : 387,
+		"w" : 46,
+		"h" : 46,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/shieldPowerUpPod.png",
+		"x" : 47,
+		"y" : 387,
+		"w" : 46,
+		"h" : 46,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/explosion03.png",
+		"x" : 94,
+		"y" : 387,
+		"w" : 51,
+		"h" : 45,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/sidearm.png",
+		"x" : 475,
+		"y" : 0,
+		"w" : 20,
+		"h" : 42,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/alienDownBullet.png",
+		"x" : 496,
+		"y" : 0,
+		"w" : 14,
+		"h" : 40,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/explosion02.png",
+		"x" : 146,
+		"y" : 387,
+		"w" : 39,
+		"h" : 36,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/points.png",
+		"x" : 186,
+		"y" : 387,
+		"w" : 36,
+		"h" : 36,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/drone.png",
+		"x" : 475,
+		"y" : 43,
+		"w" : 32,
+		"h" : 32,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/playerBullet.png",
+		"x" : 485,
+		"y" : 87,
+		"w" : 6,
+		"h" : 26,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/smallExplosion06.png",
+		"x" : 485,
+		"y" : 114,
+		"w" : 23,
+		"h" : 23,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/smallExplosion07.png",
+		"x" : 480,
+		"y" : 259,
+		"w" : 22,
+		"h" : 22,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/smallExplosion09.png",
+		"x" : 480,
+		"y" : 282,
+		"w" : 22,
+		"h" : 22,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/smallExplosion08.png",
+		"x" : 477,
+		"y" : 332,
+		"w" : 22,
+		"h" : 22,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/alienBullet.png",
+		"x" : 492,
+		"y" : 87,
+		"w" : 20,
+		"h" : 20,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/smallExplosion04.png",
+		"x" : 485,
+		"y" : 138,
+		"w" : 21,
+		"h" : 19,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/smallExplosion05.png",
+		"x" : 459,
+		"y" : 225,
+		"w" : 21,
+		"h" : 19,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/droneBullet.png",
+		"x" : 481,
+		"y" : 225,
+		"w" : 16,
+		"h" : 16,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/explosion01.png",
+		"x" : 477,
+		"y" : 355,
+		"w" : 15,
+		"h" : 15,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/smallExplosion03.png",
+		"x" : 493,
+		"y" : 355,
+		"w" : 17,
+		"h" : 15,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/smallExplosion02.png",
+		"x" : 323,
+		"y" : 160,
+		"w" : 13,
+		"h" : 12,
+		"rotated" : 0
+	},
+	{
+		"filename" : "gfx/smallExplosion01.png",
+		"x" : 399,
+		"y" : 76,
+		"w" : 5,
+		"h" : 5,
+		"rotated" : 0
+	}
+]

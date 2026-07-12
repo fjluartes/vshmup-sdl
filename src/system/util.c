@@ -13,14 +13,11 @@ unsigned long hashcode(const char *str)
 
 	c = *str;
 
-	while (c)
+	while ((c = *str++) != '\0')
 	{
-		hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
-
-		c = *str++;
+		// hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+		hash = ((hash << 5) + hash);
 	}
-
-	hash = ((hash << 5) + hash);
 
 	return hash;
 }
@@ -32,7 +29,7 @@ int collision(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
 
 char *readFile(char *filename)
 {
-	char *buffer;
+	char *buffer = NULL;
 	long  length;
 	FILE *file;
 
