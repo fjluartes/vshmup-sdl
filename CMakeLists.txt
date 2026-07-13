@@ -33,7 +33,7 @@ if(MSVC)
 else()
     target_compile_options(${PROJECT_NAME} PRIVATE
         -Wall -Wempty-body -Werror -Warray-bounds -g
-        $<$<COMPILE_LANGUAGE:C>:-Wstrict-prototypes -Werror=maybe-uninitialized>
+        $<$<COMPILE_LANGUAGE:C>:-Wstrict-prototypes -Werror=uninitialized>
     )
 endif()
 
