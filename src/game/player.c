@@ -63,7 +63,7 @@ void doPlayer(void)
 		player->y += f->speed * app.deltaTime;
 	}
 
-	if (app.keyboard[SDL_SCANCODE_LCTRL] && f->reload == 0)
+	if (app.keyboard[SDL_SCANCODE_SPACE] && f->reload == 0)
 	{
 		fireBullet();
 
