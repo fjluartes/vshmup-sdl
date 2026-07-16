@@ -23,6 +23,6 @@ From [Parallel Realities SDL2 tutorial](https://www.parallelrealities.co.uk/tuto
 - [x] Setting up
 
 ## STRETCH GOALS
-- [ ] New enemy attack pattern
 - [ ] New stage
+- [ ] New bullet patterns
 - [ ] New boss
