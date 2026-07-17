@@ -1,0 +1,1 @@
+void addPointsPod(int x, int y);

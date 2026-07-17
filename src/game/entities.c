@@ -15,17 +15,55 @@ void initEntities(void)
 	stage.entityTail = &stage.entityHead;
 }
 
-Entity *spawnEntity(void)
+Entity *spawnEntity(int type)
 {
 	Entity *e;
 
 	e = malloc(sizeof(Entity));
 	memset(e, 0, sizeof(Entity));
-
 	stage.entityTail->next = e;
 	stage.entityTail = e;
 
+	e->type = type;
+	e->health = 1;
+
 	return e;
+}
+
+void doEntities(void)
+{
+	Entity *e, *prev;
+
+	prev = &stage.entityHead;
+
+	for (e = stage.entityHead.next; e != NULL; e = e->next)
+	{
+		if (e->tick != NULL)
+		{
+			e->tick(e);
+		}
+
+		if (e->health <= 0)
+		{
+			if (e == stage.entityTail)
+			{
+				stage.entityTail = prev;
+			}
+
+			prev->next = e->next;
+
+			if (e->data != NULL)
+			{
+				free(e->data);
+			}
+
+			free(e);
+
+			e = prev;
+		}
+
+		prev = e;
+	}
 }
 
 void drawEntities(void)

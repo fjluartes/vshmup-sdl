@@ -28,3 +28,10 @@ enum
 	TEXT_ALIGN_CENTER,
 	TEXT_ALIGN_RIGHT
 };
+
+enum
+{
+	ET_PLAYER,
+	ET_ALIEN,
+	ET_POINTS
+};

@@ -1,0 +1,1 @@
+void initSwingingAlien(int startDelay);

@@ -26,10 +26,14 @@ struct AtlasImage
 
 struct Entity
 {
+	int         type;
 	double      x;
 	double      y;
 	AtlasImage *texture;
+	int         health;
 	void(*data);
+	void (*tick)(Entity *self);
+	void (*die)(Entity *self);
 	Entity *next;
 };
 
@@ -40,12 +44,26 @@ typedef struct
 	double speed;
 } Fighter;
 
+typedef struct
+{
+	double swing;
+	double startDelay;
+} SwingingAlien;
+
+typedef struct
+{
+	double dx;
+	double dy;
+	double timeout;
+} PointsPod;
+
 struct Bullet
 {
 	double      x;
 	double      y;
 	double      dx;
 	double      dy;
+	int         dead;
 	AtlasImage *texture;
 	Entity     *owner;
 	Bullet     *next;
@@ -62,6 +80,9 @@ typedef struct
 {
 	Entity entityHead, *entityTail;
 	Bullet bulletHead, *bulletTail;
+	int    hasAliens;
+	int    score;
+	int    highscore;
 } Stage;
 
 typedef struct
