@@ -4,4 +4,5 @@
 
 void    initEntities(void);
 Entity *spawnEntity(int type);
+void    doEntities(void);
 void    drawEntities(void);

@@ -1,7 +1,7 @@
 /*
  * wave.c
  */
-#include "../common.h";
+#include "../common.h"
 
 #include "../game/swingingAlien.h"
 #include "wave.h"

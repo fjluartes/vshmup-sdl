@@ -1,11 +1,11 @@
 /*
  * swingingAlien.c
  */
-#include "common.h"
+#include "../common.h"
 
-#include "../game/entities.h";
-#include "../game/pointsPod.h";
-#include "../system/atlas.h";
+#include "../game/entities.h"
+#include "../game/pointsPod.h"
+#include "../system/atlas.h"
 #include "swingingAlien.h"
 
 extern App   app;
@@ -35,7 +35,7 @@ void initSwingingAlien(int startDelay)
     e->texture = littleYellowAlienTexture;
     e->data = s;
 
-    e->x = (SCREEN_WIDTH - e->texture.rect.w) / 2;
+    e->x = (SCREEN_WIDTH - e->texture->rect.w) / 2;
     e->y = -150;
 
     e->tick = tick;
