@@ -12,6 +12,7 @@
 extern App     app;
 extern Entity *player;
 
+static void doPlayer(Entity *self);
 static void fireBullet(void);
 
 static AtlasImage *bulletTexture;
@@ -26,16 +27,18 @@ void initPlayer(void)
 	f->speed = 4.0;
 	f->reloadRate = 20;
 
-	player = spawnEntity();
+	player = spawnEntity(ET_PLAYER);
 	player->texture = getAtlasImage("gfx/player.png", 1);
 	player->x = (SCREEN_WIDTH - player->texture->rect.w) / 2;
 	player->y = SCREEN_HEIGHT - 100;
 	player->data = f;
 
+	player->tick = doPlayer;
+
 	bulletTexture = getAtlasImage("gfx/playerBullet.png", 1);
 }
 
-void doPlayer(void)
+static void doPlayer(Entity *self)
 {
 	Fighter *f;
 
@@ -78,8 +81,7 @@ static void fireBullet(void)
 {
 	Bullet *b;
 
-	b = spawnBullet();
-	b->owner = player;
+	b = spawnBullet(player);
 	b->texture = bulletTexture;
 	b->x = player->x + (player->texture->rect.w / 2) - (bulletTexture->rect.w / 2);
 	b->y = player->y - bulletTexture->rect.h;

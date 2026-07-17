@@ -3,6 +3,6 @@
  */
 
 void    initBullets(void);
-Bullet *spawnBullet(void);
+Bullet *spawnBullet(Entity *owner);
 void    doBullets(void);
 void    drawBullets(void);

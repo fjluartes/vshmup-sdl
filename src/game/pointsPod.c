@@ -1,12 +1,12 @@
 /*
  * pointsPod.c
  */
-#include "common.h"
+#include "../common.h"
 
-#include "../game/entities.h";
-#include "../system/atlas.h";
-#include "../system/util.h";
-#include "pointsPod.h";
+#include "../game/entities.h"
+#include "../system/atlas.h"
+#include "../system/util.h"
+#include "pointsPod.h"
 
 extern App     app;
 extern Entity *player;

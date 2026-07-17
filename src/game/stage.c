@@ -10,6 +10,7 @@
 #include "../game/hud.h"
 #include "../game/player.h"
 #include "../game/stars.h"
+#include "../game/wave.h"
 #include "../system/draw.h"
 #include "../system/textures.h"
 #include "stage.h"
@@ -36,6 +37,8 @@ void initStage(void)
 
 	initBullets();
 
+	initWave();
+
 	background = loadTexture("gfx/background.jpg");
 
 	backgroundY = -SCREEN_HEIGHT;
@@ -46,6 +49,8 @@ void initStage(void)
 
 static void logic(void)
 {
+	stage.hasAliens = 0;
+
 	backgroundY += app.deltaTime;
 
 	if (backgroundY >= 0)
@@ -55,9 +60,14 @@ static void logic(void)
 
 	doStars();
 
-	doPlayer();
+	doEntities();
 
 	doBullets();
+
+	if (stage.hasAliens == 0)
+	{
+		nextWave();
+	}
 }
 
 static void draw(void)
