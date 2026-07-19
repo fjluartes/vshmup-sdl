@@ -10,8 +10,7 @@ From [Parallel Realities SDL2 tutorial](https://www.parallelrealities.co.uk/tuto
 - Create build.sh, build.bat
 
 ## TODO
-- [x] Enemy attack patterns (first sequence)
-- [ ] Power-ups
+- [x] Power-ups
 - [ ] Return fire
 - [ ] Enemy attack patterns (full sequence)
 - [ ] Bosses
@@ -20,6 +19,7 @@ From [Parallel Realities SDL2 tutorial](https://www.parallelrealities.co.uk/tuto
 - [ ] Finishing touches
 
 ## DONE
+- [x] Enemy attack patterns (first sequence)
 - [x] Setting up
 
 ## STRETCH GOALS
