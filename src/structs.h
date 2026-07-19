@@ -42,6 +42,7 @@ typedef struct
 	double reload;
 	int    reloadRate;
 	double speed;
+	int    invokeSidearm;
 } Fighter;
 
 typedef struct
@@ -56,6 +57,17 @@ typedef struct
 	double dy;
 	double timeout;
 } PointsPod;
+
+typedef struct
+{
+	int    type;
+	double changeTimer;
+} PowerUpPod;
+
+typedef struct
+{
+	int ox;
+} Sidearm;
 
 struct Bullet
 {
