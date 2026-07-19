@@ -7,6 +7,7 @@ typedef struct Bullet     Bullet;
 typedef struct AtlasImage AtlasImage;
 typedef struct Star       Star;
 typedef struct Entity     Entity;
+typedef struct Explosion  Explosion;
 
 struct Texture
 {
@@ -49,6 +50,10 @@ typedef struct
 {
 	double swing;
 	double startDelay;
+	double reload;
+	double swingAmount;
+	int    sweepRange;
+	int dy;
 } SwingingAlien;
 
 typedef struct
@@ -68,6 +73,18 @@ typedef struct
 {
 	int ox;
 } Sidearm;
+
+struct Explosion
+{
+	int          x;
+	int          y;
+	int          frame;
+	int          numFrames;
+	double       frameSpeed;
+	double       frameTime;
+	AtlasImage **texture;
+	Explosion   *next;
+};
 
 struct Bullet
 {
