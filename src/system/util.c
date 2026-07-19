@@ -6,18 +6,21 @@
 
 #include "util.h"
 
-unsigned long hashcode(const char *str)
+unsigned long hashcode(const char* str)
 {
 	unsigned long hash = 5381;
 	int           c;
 
 	c = *str;
 
-	while ((c = *str++) != '\0')
+	while (c)
 	{
-		// hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
-		hash = ((hash << 5) + hash);
+		hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+
+		c = *str++;
 	}
+
+	hash = ((hash << 5) + hash);
 
 	return hash;
 }
@@ -27,11 +30,11 @@ int collision(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2)
 	return (MAX(x1, x2) < MIN(x1 + w1, x2 + w2)) && (MAX(y1, y2) < MIN(y1 + h1, y2 + h2));
 }
 
-char *readFile(char *filename)
+char* readFile(char* filename)
 {
-	char *buffer = NULL;
+	char* buffer;
 	long  length;
-	FILE *file;
+	FILE* file;
 
 	file = fopen(filename, "rb");
 

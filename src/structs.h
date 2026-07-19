@@ -53,7 +53,7 @@ typedef struct
 	double reload;
 	double swingAmount;
 	int    sweepRange;
-	int dy;
+	int    dy;
 } SwingingAlien;
 
 typedef struct
@@ -109,7 +109,7 @@ typedef struct
 {
 	Entity entityHead, *entityTail;
 	Bullet bulletHead, *bulletTail;
-	int    hasAliens;
+	int    numAliens;
 	int    score;
 	int    highscore;
 } Stage;

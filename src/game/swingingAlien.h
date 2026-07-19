@@ -1,1 +1,1 @@
-void initSwingingAlien(int startDelay);
+void initSwingingAlien(int startDelay, int x, double swingAmount, int sweepRange, int dy);
