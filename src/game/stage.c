@@ -9,6 +9,7 @@
 #include "../game/entities.h"
 #include "../game/hud.h"
 #include "../game/player.h"
+#include "../game/powerUpPod.h"
 #include "../game/stars.h"
 #include "../game/wave.h"
 #include "../system/draw.h"
@@ -42,6 +43,8 @@ void initStage(void)
 	background = loadTexture("gfx/background.jpg");
 
 	backgroundY = -SCREEN_HEIGHT;
+
+	addPowerUpPod(SCREEN_WIDTH / 2, -50, PP_SIDEARM);
 
 	app.delegate.logic = logic;
 	app.delegate.draw = draw;
