@@ -15,9 +15,9 @@
 extern App     app;
 extern Entity *player;
 
-static void tick(Entity *self);
 static void activatePowerUp(Entity *self, PowerUpPod *p);
 static void updateTexture(Entity *e, PowerUpPod *p);
+static void tick(Entity *self);
 
 static AtlasImage *sidearmPodTexture = NULL;
 

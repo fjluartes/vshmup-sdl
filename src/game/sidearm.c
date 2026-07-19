@@ -50,11 +50,11 @@ static void tick(Entity *self)
 
     self->x = player->x;
     self->x += (player->texture->rect.w / 2);
-    self->x = (self->texture->rect.w / 2);
+    self->x -= (self->texture->rect.w / 2);
     self->x += s->ox;
 
     self->y = player->y + player->texture->rect.h;
-    self->y = self->texture->rect.h;
+    self->y -= self->texture->rect.h;
 
     if (((Fighter *)player->data)->invokeSidearm)
     {
