@@ -45,6 +45,7 @@ static void doPlayer(Entity *self)
 	f = (Fighter *)player->data;
 
 	f->reload = MAX(f->reload - app.deltaTime, 0);
+	f->invokeSidearm = 0;
 
 	if (app.keyboard[SDL_SCANCODE_LEFT])
 	{
@@ -71,6 +72,7 @@ static void doPlayer(Entity *self)
 		fireBullet();
 
 		f->reload = f->reloadRate;
+		f->invokeSidearm = 1;
 	}
 
 	player->x = MIN(MAX(player->x, 0), SCREEN_WIDTH - player->texture->rect.w);
