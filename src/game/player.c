@@ -5,6 +5,7 @@
 #include "../common.h"
 
 #include "../game/bullets.h"
+#include "../game/effects.h"
 #include "../game/entities.h"
 #include "../system/atlas.h"
 #include "player.h"
@@ -14,6 +15,7 @@ extern Entity *player;
 
 static void doPlayer(Entity *self);
 static void fireBullet(void);
+static void die(Entity *self);
 
 static AtlasImage *bulletTexture;
 
@@ -34,6 +36,7 @@ void initPlayer(void)
 	player->data = f;
 
 	player->tick = doPlayer;
+	player->die = die;
 
 	bulletTexture = getAtlasImage("gfx/playerBullet.png", 1);
 }
@@ -77,6 +80,12 @@ static void doPlayer(Entity *self)
 
 	player->x = MIN(MAX(player->x, 0), SCREEN_WIDTH - player->texture->rect.w);
 	player->y = MIN(MAX(player->y, 0), SCREEN_HEIGHT - player->texture->rect.h);
+}
+
+static void die(Entity *self)
+{
+	addExplosion(self->x + (self->texture->rect.w / 2),
+		         self->y + (self->texture->rect.h / 2));
 }
 
 static void fireBullet(void)

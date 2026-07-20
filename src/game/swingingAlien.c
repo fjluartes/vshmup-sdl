@@ -11,8 +11,9 @@
 #include "../system/util.h"
 #include "swingingAlien.h"
 
-extern App   app;
-extern Stage stage;
+extern App     app;
+extern Entity *player;
+extern Stage   stage;
 
 static void tick(Entity *self);
 static void die(Entity *self);
@@ -81,6 +82,19 @@ static void tick(Entity* self)
         {
             fireBullet(self);
         }
+    }
+
+    if (player->health > 0 && 
+            collision(self->x, self->y, 
+                      self->texture->rect.w, self->texture->rect.h, 
+                      player->x, player->y,
+                      player->texture->rect.w, player->texture->rect.h))
+    {
+        self->health = 0;
+        self->die(self);
+
+        player->health = 0;
+        player->die(player);
     }
 
     stage.numAliens++;

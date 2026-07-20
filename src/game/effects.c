@@ -12,7 +12,7 @@
 
 extern App app;
 
-static Explosion explosionHead *explosionTail;
+static Explosion explosionHead, *explosionTail;
 static AtlasImage *smallExplosionTextures[NUM_SMALL_EXPLOSION_FRAMES];
 static AtlasImage *explosionTextures[NUM_EXPLOSION_FRAMES];
 static int hasTextures = 0;
@@ -51,7 +51,7 @@ void doEffects(void)
 
 	prev = &explosionHead;
 
-	for (e = explosionHead.next; e != NULL; e->next)
+	for (e = explosionHead.next; e != NULL; e = e->next)
 	{
 		e->frameTime -= app.deltaTime;
 

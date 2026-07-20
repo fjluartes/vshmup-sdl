@@ -100,6 +100,9 @@ static void doAlienCollisions(Bullet *b)
 			}
 
 			b->dead = 1;
+
+			addSmallExplosion(b->x + (b->texture->rect.w / 2),
+			                  b->y + (b->texture->rect.h / 2));
 		}
 	}
 }
