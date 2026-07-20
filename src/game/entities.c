@@ -57,7 +57,7 @@ void doEntities(void)
 
 			prev->next = e->next;
 
-			// mopve to dead queue
+			// move to dead queue
 			deadTail->next = e;
 			deadTail = e;
 			deadTail->next = NULL;
@@ -107,6 +107,8 @@ void clearDeadEntities(void)
 	while (deadHead.next)
 	{
 		e = deadHead.next;
+
+		deadHead.next = e->next;
 
 		if (e->data != NULL)
 		{

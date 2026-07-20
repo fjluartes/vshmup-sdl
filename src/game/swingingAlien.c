@@ -84,17 +84,15 @@ static void tick(Entity* self)
         }
     }
 
-    if (player->health > 0 && 
+    if (player != NULL && player->health > 0 && 
             collision(self->x, self->y, 
                       self->texture->rect.w, self->texture->rect.h, 
                       player->x, player->y,
                       player->texture->rect.w, player->texture->rect.h))
     {
         self->health = 0;
-        self->die(self);
 
         player->health = 0;
-        player->die(player);
     }
 
     stage.numAliens++;
