@@ -50,13 +50,18 @@ void nextWave(void)
 
 static void addSwingingAliens(void)
 {
-    int n, i, delay;
+    int n, i, x, delay, sweepRange, dy;
+    double swingAmount;
 
     n = 6 + rand() % 7;
     delay = 10 + rand() % 20;
+    swingAmount = 1.0 * (5 + rand() % 6) * 0.01;
+    sweepRange = 5 + rand() % 10;
+    dy = 1 + rand() % 5;
+    x = (SCREEN_WIDTH / 2);
 
     for (i = 0; i < n; i++)
     {
-        initSwingingAlien(i * delay);
+        initSwingingAlien(i * delay, x, swingAmount, sweepRange, dy);
     }
 }

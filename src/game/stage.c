@@ -6,6 +6,7 @@
 #include "../common.h"
 
 #include "../game/bullets.h"
+#include "../game/effects.h"
 #include "../game/entities.h"
 #include "../game/hud.h"
 #include "../game/player.h"
@@ -16,15 +17,18 @@
 #include "../system/textures.h"
 #include "stage.h"
 
-extern App   app;
-extern Stage stage;
+extern App     app;
+extern Entity *player;
+extern Stage   stage;
 
 static void logic(void);
 static void draw(void);
 static void drawBackground(void);
+static void resetStage(void);
 
 static SDL_Texture *background;
 static double       backgroundY;
+static double       gameOverTimer;
 
 void initStage(void)
 {
@@ -37,6 +41,8 @@ void initStage(void)
 	initStars();
 
 	initBullets();
+
+	initEffects();
 
 	initWave();
 
@@ -52,7 +58,7 @@ void initStage(void)
 
 static void logic(void)
 {
-	stage.hasAliens = 0;
+	stage.numAliens = 0;
 
 	backgroundY += app.deltaTime;
 
@@ -67,8 +73,23 @@ static void logic(void)
 
 	doBullets();
 
-	if (stage.hasAliens == 0)
+	doEffects();
+
+	if (player->health <= 0)
 	{
+		gameOverTimer -= app.deltaTime;
+
+		if (gameOverTimer <= 0)
+		{
+			resetStage();
+
+			initStage();
+		}
+	}
+	else if (stage.numAliens == 0)
+	{
+		clearDeadEntities();
+
 		nextWave();
 	}
 }
@@ -83,6 +104,8 @@ static void draw(void)
 
 	drawBullets();
 
+	drawEffects();
+
 	drawHud();
 }
 
@@ -94,4 +117,15 @@ static void drawBackground(void)
 	{
 		blit(background, 0, y, 0, SDL_FLIP_NONE);
 	}
+}
+
+static void resetStage(void)
+{
+	clearEntities();
+
+	clearDeadEntities();
+
+	clearBullets();
+
+	clearEffects();
 }

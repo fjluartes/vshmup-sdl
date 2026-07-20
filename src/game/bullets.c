@@ -4,6 +4,7 @@
 
 #include "../common.h"
 
+#include "../game/effects.h"
 #include "../system/draw.h"
 #include "../system/util.h"
 #include "bullets.h"
@@ -13,6 +14,7 @@ extern Entity *player;
 extern Stage   stage;
 
 static void doAlienCollisions(Bullet *b);
+static void doPlayerCollisions(Bullet *b);
 
 void initBullets(void)
 {
@@ -54,6 +56,10 @@ void doBullets(void)
 		else if (b->owner == player)
 		{
 			doAlienCollisions(b);
+		}
+		else if (b->owner->type == ET_ALIEN && player->health > 0)
+		{
+			doPlayerCollisions(b);
 		}
 
 		if (b->dead)
@@ -98,6 +104,24 @@ static void doAlienCollisions(Bullet *b)
 	}
 }
 
+static void doPlayerCollisions(Bullet *b)
+{
+	if (collision(player->x, player->y,
+			      player->texture->rect.w, player->texture->rect.h,
+			      b->x, b->y,
+			      b->texture->rect.w, b->texture->rect.h))
+	{
+		player->health = 0;
+
+		player->die(player);
+
+		b->dead = 1;
+		
+		addSmallExplosion(b->x + (b->texture->rect.w / 2),
+			              b->y + (b->texture->rect.h / 2));
+	}
+}
+
 void drawBullets(void)
 {
 	Bullet *b;
@@ -106,4 +130,20 @@ void drawBullets(void)
 	{
 		blitAtlasImage(b->texture, b->x, b->y, 0, SDL_FLIP_NONE);
 	}
+}
+
+void clearBullets(void)
+{
+	Bullet *b;
+
+	while (stage.bulletHead.next)
+	{
+		b = stage.bulletHead.next;
+
+		stage.bulletHead.next = b->next;
+
+		free(b);
+	}
+
+	stage.bulletTail = &stage.bulletHead;
 }

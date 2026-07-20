@@ -4,6 +4,7 @@
 #include "../common.h"
 
 #include "../game/bullets.h"
+#include "../game/effects.h"
 #include "../game/entities.h"
 #include "../game/pointsPod.h"
 #include "../system/atlas.h"
@@ -15,6 +16,7 @@ extern Stage stage;
 
 static void tick(Entity *self);
 static void die(Entity *self);
+static void fireBullet(Entity *self);
 
 static AtlasImage *littleYellowAlienTexture = NULL;
 static AtlasImage *bulletTexture = NULL;
@@ -86,8 +88,13 @@ static void tick(Entity* self)
 
 static void die(Entity *self)
 {
-    // addExplosion, effects.c
-    addPointsPod(self->x, self->y);
+    addExplosion(self->x + (self->texture->rect.w / 2),
+                 self->y + (self->texture->rect.h / 2));
+
+    if (--stage.numAliens == 0)
+    {
+        addPointsPod(self->x, self->y);
+    }
 }
 
 static void fireBullet(Entity* self)
@@ -97,6 +104,6 @@ static void fireBullet(Entity* self)
     b = spawnBullet(self);
     b->texture = bulletTexture;
     b->x = self->x + (self->texture->rect.w / 2) - (bulletTexture->rect.w / 2);
-    b->y = self->y _ self->texture->rect.h;
+    b->y = self->y - self->texture->rect.h;
     b->dy = 10;
 }

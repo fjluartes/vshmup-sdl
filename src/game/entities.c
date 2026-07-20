@@ -9,10 +9,15 @@
 
 extern Stage stage;
 
+static Entity deadHead, *deadTail;
+
 void initEntities(void)
 {
 	memset(&stage.entityHead, 0, sizeof(Entity));
 	stage.entityTail = &stage.entityHead;
+
+	memset(&deadHead, 0, sizeof(Entity));
+	deadTail = &deadHead;
 }
 
 Entity *spawnEntity(int type)
@@ -52,12 +57,10 @@ void doEntities(void)
 
 			prev->next = e->next;
 
-			if (e->data != NULL)
-			{
-				free(e->data);
-			}
-
-			free(e);
+			// mopve to dead queue
+			deadTail->next = e;
+			deadTail = e;
+			deadTail->next = NULL;
 
 			e = prev;
 		}
@@ -74,4 +77,44 @@ void drawEntities(void)
 	{
 		blitAtlasImage(e->texture, e->x, e->y, 0, SDL_FLIP_NONE);
 	}
+}
+
+void clearEntities(void)
+{
+	Entity *e;
+
+	while (stage.entityHead.next)
+	{
+		e = stage.entityHead.next;
+
+		stage.entityHead.next = e->next;
+
+		if (e->data != NULL)
+		{
+			free(e->data);
+		}
+
+		free(e);
+	}
+
+	stage.entityTail = &stage.entityHead;
+}
+
+void clearDeadEntities(void)
+{
+	Entity *e;
+
+	while (deadHead.next)
+	{
+		e = deadHead.next;
+
+		if (e->data != NULL)
+		{
+			free(e->data);
+		}
+
+		free(e);
+	}
+
+	deadTail = &deadHead;
 }
