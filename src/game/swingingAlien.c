@@ -1,6 +1,7 @@
 /*
  * swingingAlien.c
  */
+
 #include "../common.h"
 
 #include "../game/bullets.h"
@@ -82,6 +83,7 @@ static void tick(Entity* self)
         {
             fireBullet(self);
         }
+        s->reload = FPS;
     }
 
     if (player != NULL && player->health > 0 && 

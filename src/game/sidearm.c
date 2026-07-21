@@ -5,6 +5,7 @@
 #include "../common.h"
 
 #include "../game/bullets.h"
+#include "../game/effects.h"
 #include "../game/entities.h"
 #include "../system/atlas.h"
 #include "sidearm.h"
@@ -59,6 +60,14 @@ static void tick(Entity *self)
     if (((Fighter *)player->data)->invokeSidearm)
     {
         fireBullet(self);
+    }
+
+    if (player->health <= 0)
+    {
+        addExplosion(self->x + (self->texture->rect.w / 2),
+                     self->y + (self->texture->rect.h / 2),);
+
+        self->health = 0;
     }
 }
 
