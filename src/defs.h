@@ -17,10 +17,13 @@
 #define FPS        60.0
 #define LOGIC_RATE (FPS / 1000)
 
+#define MAX_NAME_LENGTH     16
 #define MAX_LINE_LENGTH     1024
 #define MAX_FILENAME_LENGTH 256
 
 #define MAX_KEYBOARD_KEYS 350
+
+#define NUM_HIGHSCORES 11
 
 enum
 {

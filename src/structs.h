@@ -32,8 +32,10 @@ struct Entity
 	double      y;
 	AtlasImage *texture;
 	int         health;
-	void(*data);
+	void (*data);
 	void (*tick)(Entity *self);
+	void (*draw)(Entity *self);
+	void (*takeDamage)(Entity *self, int amount);
 	void (*die)(Entity *self);
 	Entity *next;
 };
@@ -54,7 +56,33 @@ typedef struct
 	double swingAmount;
 	int    sweepRange;
 	int    dy;
+	double damageTimer;
 } SwingingAlien;
+
+typedef struct
+{
+	double swoop;
+	double swoopAmount;
+	double startDelay;
+	double reload;
+	double dx;
+	double damageTimer;
+} SwoopingAlien;
+
+typedef struct
+{
+	double startDelay;
+	double reload;
+	double dx;
+	double dy;
+	double damageTimer;
+} StraightAlien;
+
+typedef struct
+{
+	double dx;
+	double damageTimer;
+} SupplyShip;
 
 typedef struct
 {
@@ -73,18 +101,6 @@ typedef struct
 {
 	int ox;
 } Sidearm;
-
-struct Explosion
-{
-	int          x;
-	int          y;
-	int          frame;
-	int          numFrames;
-	double       frameSpeed;
-	double       frameTime;
-	AtlasImage **texture;
-	Explosion   *next;
-};
 
 struct Bullet
 {
@@ -105,14 +121,37 @@ struct Star
 	double speed;
 };
 
+struct Explosion
+{
+	int          x;
+	int          y;
+	int          frame;
+	int          numFrames;
+	double       frameSpeed;
+	double       frameTime;
+	AtlasImage **texture;
+	Explosion   *next;
+};
+
+typedef struct
+{
+	char name[MAX_NAME_LENGTH];
+	int  score;
+} Highscore;
+
 typedef struct
 {
 	Entity entityHead, *entityTail;
 	Bullet bulletHead, *bulletTail;
-	int    numAliens;
+	int    hasAliens;
+	int    numWaveAliens;
 	int    score;
-	int    highscore;
 } Stage;
+
+typedef struct
+{
+	Highscore highscores[NUM_HIGHSCORES];
+} Game;
 
 typedef struct
 {

@@ -1,0 +1,1 @@
+void initSwoopingAlien(int startDelay, int x, double dx, double swoopAmount);
