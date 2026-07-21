@@ -65,7 +65,7 @@ static void tick(Entity *self)
     if (player->health <= 0)
     {
         addExplosion(self->x + (self->texture->rect.w / 2),
-                     self->y + (self->texture->rect.h / 2),);
+                     self->y + (self->texture->rect.h / 2));
 
         self->health = 0;
     }

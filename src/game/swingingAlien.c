@@ -93,8 +93,10 @@ static void tick(Entity* self)
                       player->texture->rect.w, player->texture->rect.h))
     {
         self->health = 0;
+        self->die(self);
 
         player->health = 0;
+        player->die(player);
     }
 
     stage.numAliens++;
