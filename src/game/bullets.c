@@ -92,12 +92,7 @@ static void doAlienCollisions(Bullet *b)
 				          b->x, b->y, 
 			              b->texture->rect.w, b->texture->rect.h))
 		{
-			e->health--;
-
-			if (e->health == 0)
-			{
-				e->die(e);
-			}
+			e->takeDamage(e, 1);
 
 			b->dead = 1;
 

@@ -75,7 +75,14 @@ void drawEntities(void)
 
 	for (e = stage.entityHead.next; e != NULL; e = e->next)
 	{
-		blitAtlasImage(e->texture, e->x, e->y, 0, SDL_FLIP_NONE);
+		if (e->draw != NULL)
+		{
+			e->draw(e);
+		}
+		else
+		{
+			blitAtlasImage(e->texture, e->x, e->y, 0, SDL_FLIP_NONE);	
+		}
 	}
 }
 

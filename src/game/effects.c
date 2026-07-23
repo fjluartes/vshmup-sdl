@@ -12,14 +12,14 @@
 
 extern App app;
 
-static Explosion explosionHead, *explosionTail;
+static Explosion   explosionHead, *explosionTail;
 static AtlasImage *smallExplosionTextures[NUM_SMALL_EXPLOSION_FRAMES];
 static AtlasImage *explosionTextures[NUM_EXPLOSION_FRAMES];
-static int hasTextures = 0;
+static int         hasTextures = 0;
 
 void initEffects(void)
 {
-	int i;
+	int  i;
 	char filename[MAX_FILENAME_LENGTH];
 
 	memset(&explosionHead, 0, sizeof(Explosion));
@@ -125,7 +125,7 @@ void addExplosion(int x, int y)
 	e->numFrames = NUM_EXPLOSION_FRAMES;
 	e->frameSpeed = 4;
 	e->frameTime = e->frameSpeed;
-	e->texture = smallExplosionTextures;
+	e->texture = explosionTextures;
 }
 
 void clearEffects(void)
