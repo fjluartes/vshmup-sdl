@@ -9,6 +9,7 @@
 #include "../game/entities.h"
 #include "../game/pointsPod.h"
 #include "../system/atlas.h"
+#include "../system/draw.h"
 #include "../system/util.h"
 #include "swingingAlien.h"
 
@@ -19,6 +20,8 @@ extern Stage   stage;
 static void tick(Entity *self);
 static void die(Entity *self);
 static void fireBullet(Entity *self);
+static void draw(Entity *self);
+static void takeDamage(Entity *self, int amount);
 
 static AtlasImage *littleYellowAlienTexture = NULL;
 static AtlasImage *bulletTexture = NULL;
@@ -51,6 +54,8 @@ void initSwingingAlien(int startDelay, int x, double swingAmount, int sweepRange
     e->y = -150;
 
     e->tick = tick;
+    e->draw = draw;
+    e->takeDamage = takeDamage;
     e->die = die;
 }
 
@@ -100,6 +105,16 @@ static void tick(Entity* self)
     }
 
     stage.numAliens++;
+}
+
+static void draw(Entity *self)
+{
+
+}
+
+static void takeDamage(Entity *self, int amount)
+{
+    
 }
 
 static void die(Entity *self)
