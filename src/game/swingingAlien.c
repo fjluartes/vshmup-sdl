@@ -91,7 +91,7 @@ static void tick(Entity* self)
         s->reload = FPS;
     }
 
-    if (player != NULL && player->health > 0 && 
+    if (player->health > 0 && 
             collision(self->x, self->y, 
                       self->texture->rect.w, self->texture->rect.h, 
                       player->x, player->y,
@@ -104,21 +104,41 @@ static void tick(Entity* self)
         player->die(player);
     }
 
-    stage.numAliens++;
+    stage.hasAliens = 1;
 }
 
 static void draw(Entity *self)
 {
+    SwingingAlien *s;
 
+    s = (SwingingAlien *)self->data;
+
+    blitAtlasImage(self->texture, self->x, self->y, 0, SDL_FLIP_NONE);
+
+    if (s->damageTimer > 0)
+    {
+        SDL_SetTextureBlendMode(self->texture->texture, SDL_BLENDMODE_ADD);
+        blitAtlasImage(self->texture, self->x, self->y, 0, SDL_FLIP_NONE);
+        SDL_SetTextureBlendMode(self->texture->texture, SDL_BLENDMODE_BLEND);
+    }
 }
 
 static void takeDamage(Entity *self, int amount)
 {
-    
+    self->health -= amount;
+
+    if (self->health == 0)
+    {
+        self->die(self);
+    }
+
+    ((SwingingAlien *)self->data)->damageTimer = 8;
 }
 
 static void die(Entity *self)
 {
+    stage.score++;
+    
     addExplosion(self->x + (self->texture->rect.w / 2),
                  self->y + (self->texture->rect.h / 2));
 
