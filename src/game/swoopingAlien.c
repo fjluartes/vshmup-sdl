@@ -9,8 +9,8 @@
 #include "../game/entities.h"
 #include "../game/pointsPod.h"
 #include "../system/atlas.h"
-#include "../system/atlas.h"
-#include "../system/atlas.h"
+#include "../system/draw.h"
+#include "../system/util.h"
 #include "swoopingAlien.h"
 
 extern App     app;
@@ -112,20 +112,52 @@ static void tick(Entity *self)
 
 static void draw(Entity *self)
 {
+    SwoopingAlien *s;
 
+    s = (SwoopingAlien *)self->data;
+
+    blitAtlasImage(self->texture, self->x, self->y, 0, SDL_FLIP_NONE);
+
+    if (s->damageTimer > 0)
+    {
+        SDL_SetTextureBlendMode(self->texture->texture, SDL_BLENDMODE_ADD);
+        blitAtlasImage(self->texture, self->x, self->y, 0, SDL_FLIP_NONE);
+        SDL_SetTextureBlendMode(self->texture->texture, SDL_BLENDMODE_BLEND);
+    }
 }
 
 static void takeDamage(Entity *self, int amount)
 {
+    self->health -= amount;
 
+    if (self->health == 0)
+    {
+        self->die(self);
+    }
+
+    ((SwoopingAlien *)self->data)->damageTimer = 8;
 }
 
 static void die(Entity *self)
 {
-    
+    stage.score++;
+
+    addExplosion(self->x + (self->textutre->rect.w / 2),
+                 self->y + (self->textutre->rect.h / 2));
+
+    if (--stage.numWaveAliens == 0)
+    {
+        addPointsPod(self->x, self->y);
+    }
 }
 
 static void fireBullet(Entity *self)
 {
+    Bullet *b;
 
+    b = spawnBullet(self);
+    b->texture = bulletTexture;
+    b->x = self->x + (self->texture->rect.w / 2) - (bulletTexture->rect.w / 2);
+    b->y = self->y + self->texture->rect.h;
+    b->dy = 10;
 }
