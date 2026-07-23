@@ -69,17 +69,45 @@ static void tick(Entity *self)
     if (s->startDelay <= 0)
     {
         s->swoop += s->swoopAmount * app.deltaTime;
+
+        self->x += sin(s->swoop);
+        self->y += s->dx * app.deltaTime;
     }
-}
 
-static void die(Entity *self)
-{
-    
-}
+    if ((s->dx > 0 && self->x >= SCREEN_WIDTH) ||
+        (s->dx < 0 && self->x <= -self->texture->rect.w))
+    {
+        self->health = 0;
+    }
 
-static void fireBullet(Entity *self)
-{
+    s->reload = MAX(s->reload - app.deltaTime, 0);
 
+    if (s->reload == 0)
+    {
+        if (rand() % 5 == 0)
+        {
+            fireBullet(self);
+        }
+
+        s->reload = FPS;
+    }
+
+    s->damageTimer = MAX(s->damageTimer - app.deltaTime, 0);
+
+    if (player->health > 0 &&
+        collision(self->x, self->y,
+                  self->texture->rect.w, self->texture->rect.h,
+                  player->x, player->y,
+                  player->texture->rect.w, player->texture->rect.h))
+    {
+        self->health = 0;
+        self->die(self);
+
+        player->health = 0;
+        player->die(player);
+    }
+
+    stage.hasAliens = 1;
 }
 
 static void draw(Entity *self)
@@ -88,6 +116,16 @@ static void draw(Entity *self)
 }
 
 static void takeDamage(Entity *self, int amount)
+{
+
+}
+
+static void die(Entity *self)
+{
+    
+}
+
+static void fireBullet(Entity *self)
 {
 
 }
