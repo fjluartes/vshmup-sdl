@@ -21,7 +21,7 @@ static void tick(Entity *self);
 static void die(Entity *self);
 static void draw(Entity *self);
 static void fireBullet(Entity *self);
-static void takeDamege(Entity *self, int amount);
+static void takeDamage(Entity *self, int amount);
 
 static AtlasImage *littleGreyAlienTexture = NULL;
 static AtlasImage *bulletTexture = NULL;
@@ -41,7 +41,7 @@ void initStraightAlien(int startDelay, int x, int y, double dx, double dy)
     if (littleGreyAlienTexture == NULL)
     {
         littleGreyAlienTexture = getAtlasImage("gfx/littleGreyAlien.png", 1);
-        bulletTexture = getAtlasImage("gfx/alienDownBullet.png");
+        bulletTexture = getAtlasImage("gfx/alienDownBullet.png", 1);
     }
 
     e = spawnEntity(ET_ALIEN);

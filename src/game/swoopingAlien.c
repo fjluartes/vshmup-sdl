@@ -142,8 +142,8 @@ static void die(Entity *self)
 {
     stage.score++;
 
-    addExplosion(self->x + (self->textutre->rect.w / 2),
-                 self->y + (self->textutre->rect.h / 2));
+    addExplosion(self->x + (self->texture->rect.w / 2),
+                 self->y + (self->texture->rect.h / 2));
 
     if (--stage.numWaveAliens == 0)
     {

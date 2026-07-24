@@ -28,7 +28,7 @@ void updateHighscores(void)
 {
     game.highscores[NUM_HIGHSCORES - 1].score = stage.score;
 
-    qsort(game.highscores, NUM_HIGHSCROES, sizeof(Highscore), highscoreComparator);
+    qsort(game.highscores, NUM_HIGHSCORES, sizeof(Highscore), highscoreComparator);
 }
 
 static int highscoreComparator(const void *a, const void *b)

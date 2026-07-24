@@ -5,6 +5,8 @@
 #include "../common.h"
 
 #include "../game/swingingAlien.h"
+#include "../game/swoopingAlien.h"
+#include "../game/straightAlien.h"
 #include "wave.h"
 
 extern App   app;
