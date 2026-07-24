@@ -75,14 +75,13 @@ static void tick(Entity *self)
         p->dy = -p->dy;
     }
 
-    if (collision(self->x, self->y, 
-        self->texture->rect.w, self->texture->rect.h, 
-        player->x, player->y, 
-        player->texture->rect.w, player->texture->rect.h))
+    if (player->health > 0 && 
+        collision(self->x, self->y, 
+            self->texture->rect.w, self->texture->rect.h, 
+            player->x, player->y, 
+            player->texture->rect.w, player->texture->rect.h))
     {
-        stage.score++;
-
-        stage.highscore = MAX(stage.highscore, stage.score);
+        stage.score += 10;
 
         self->health = 0;
     }
