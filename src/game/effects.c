@@ -1,6 +1,7 @@
 /*
  * effects.c
  */
+
 #include "../common.h"
 
 #include "../system/atlas.h"
@@ -113,7 +114,7 @@ void addSmallExplosion(int x, int y)
 
 void addExplosion(int x, int y)
 {
-	Explosion* e;
+	Explosion *e;
 
 	e = malloc(sizeof(Explosion));
 	memset(e, 0, sizeof(Explosion));
