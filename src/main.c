@@ -13,6 +13,7 @@
 
 App     app;
 Entity *player;
+Game    game;
 Stage   stage;
 
 static void logic(void);

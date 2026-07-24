@@ -21,7 +21,7 @@ static void tick(Entity *self);
 
 static AtlasImage *sidearmPodTexture = NULL;
 
-void addPowerUpPod(int x, int y, int type)
+void addPowerUpPod(int x, int y)
 {
     PowerUpPod *p;
     Entity     *e;
@@ -29,7 +29,7 @@ void addPowerUpPod(int x, int y, int type)
     p = malloc(sizeof(PowerUpPod));
     memset(p, 0, sizeof(PowerUpPod));
 
-    p->type = type;
+    p->type = rand() % PP_MAX;
     p->changeTimer = CHANGE_TIMER;
 
     e = spawnEntity(ET_POWER_UP_POD);
@@ -64,10 +64,11 @@ static void tick(Entity *self)
         updateTexture(self, p);
     }
 
-    if (collision(self->x, self->y,
-                  self->texture->rect.w, self->texture->rect.h,
-                  player->x, player->y,
-                  player->texture->rect.w, player->texture->rect.h))
+    if (player->health > 0 && 
+        collision(self->x, self->y,
+            self->texture->rect.w, self->texture->rect.h,
+            player->x, player->y,
+            player->texture->rect.w, player->texture->rect.h))
     {
         activatePowerUp(self, p);
     }

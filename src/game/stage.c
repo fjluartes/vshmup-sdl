@@ -8,14 +8,17 @@
 #include "../game/bullets.h"
 #include "../game/effects.h"
 #include "../game/entities.h"
+#include "../game/highscores.h"
 #include "../game/hud.h"
 #include "../game/player.h"
-#include "../game/powerUpPod.h"
 #include "../game/stars.h"
+#include "../game/supplyShip.h"
 #include "../game/wave.h"
 #include "../system/draw.h"
 #include "../system/textures.h"
 #include "stage.h"
+
+#define SUPPLY_SHIP_INTERVAL (FPS * 30)
 
 extern App     app;
 extern Entity *player;
@@ -29,6 +32,7 @@ static void resetStage(void);
 static SDL_Texture *background;
 static double       backgroundY;
 static double       gameOverTimer;
+static double       nextSupplyShipTimer;
 
 void initStage(void)
 {
@@ -50,7 +54,9 @@ void initStage(void)
 
 	backgroundY = -SCREEN_HEIGHT;
 
-	addPowerUpPod(SCREEN_WIDTH / 2, -50, PP_SIDEARM);
+	gameOverTimer = FPS * 2;
+
+	nextSupplyShipTimer = SUPPLY_SHIP_INTERVAL / 2;
 
 	app.delegate.logic = logic;
 	app.delegate.draw = draw;
@@ -58,13 +64,22 @@ void initStage(void)
 
 static void logic(void)
 {
-	stage.numAliens = 0;
+	stage.hasAliens = 0;
 
 	backgroundY += app.deltaTime;
 
 	if (backgroundY >= 0)
 	{
 		backgroundY = -SCREEN_HEIGHT;
+	}
+
+	nextSupplyShipTimer -= app.deltaTime;
+
+	if (nextSupplyShipTimer <= 0)
+	{
+		initSupplyShip();
+
+		nextSupplyShipTimer = SUPPLY_SHIP_INTERVAL;
 	}
 
 	doStars();
@@ -81,12 +96,14 @@ static void logic(void)
 
 		if (gameOverTimer <= 0)
 		{
+			updateHighscores();
+
 			resetStage();
 
 			initStage();
 		}
 	}
-	else if (stage.numAliens == 0)
+	else if (!stage.hasAliens)
 	{
 		clearDeadEntities();
 

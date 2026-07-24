@@ -1,1 +1,1 @@
-void addPowerUpPod(int x, int y, int type);
+void addPowerUpPod(int x, int y);
