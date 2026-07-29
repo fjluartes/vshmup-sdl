@@ -84,6 +84,18 @@ typedef struct
 	double damageTimer;
 } SupplyShip;
 
+typedef struct 
+{
+	int    maxHealth;
+	double thinkTime;
+	double dx;
+	double reload;
+	double attackTime;
+	double numShotsToFire;
+	double damageTimer;
+	void (*fireBullets)(Entity *self);
+} Boss;
+
 typedef struct
 {
 	double dx;
@@ -141,11 +153,13 @@ typedef struct
 
 typedef struct
 {
-	Entity entityHead, *entityTail;
-	Bullet bulletHead, *bulletTail;
-	int    hasAliens;
-	int    numWaveAliens;
-	int    score;
+	Entity  entityHead, *entityTail;
+	Bullet  bulletHead, *bulletTail;
+	int     hasAliens;
+	int     numWaveAliens;
+	int     score;
+	int     waveNum;
+	Entity *boss;
 } Stage;
 
 typedef struct
