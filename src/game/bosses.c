@@ -183,22 +183,130 @@ static void initRedBoss(void)
 
 static void tick(Entity *self)
 {
+    Boss *b;
 
+    stage.hasAliens = 1;
+
+    if (self->y < 120)
+    {
+        self->y += app.deltaTime;
+        return;
+    }
+
+    b = (Boss *)self->data;
+
+    self->x += b->dx;
+    // clamp boss texture to walls
+    self->x = MAX(MIN(self->x, SCREEN_WIDTH - self->texture->rect.w), 0);
+
+    // reverse direction when boss hits wall
+    if ((self->x == 0 && b->dx < 0) ||
+        (self->x == SCREEN_WIDTH - self->texture->rect.w && b->dx > 0))
+    {
+        b->dx = -b->dx;
+    }
+
+    self->y = 120;
+
+    b->thinkTime = MAX(b->thinkTime - app.deltaTime, 0);
+
+    if (b->thinkTime == 0)
+    {
+        b->dx = 0;
+
+        if (rand() % 5 != 0)
+        {
+            b->dx = (1.0 * (rand() % 500 - rand() % 500)) * 0.001;
+        }
+
+        b->thinkTime = FPS * (25 + (rand() % 75));
+        b->thinkTime *= 0.01;
+    }
+
+    b->attackTime = MAX(b->attackTime - app.deltaTime, 0);
+
+    if (b->attackTime == 0)
+    {
+        b->numShotsToFire = 3 + rand() % 4;
+
+        b->attackTime = FPS * (2 + (rand() % 3));
+    }
+
+    b->reload = MAX(b->reload - app.deltaTime, 0);
+
+    if (b->reload == 0 && b->numShotsToFire > 0)
+    {
+        b->numShotsToFire--;
+
+        b->reload = 12;
+
+        b->fireBullets(self);
+    }
+
+    b->damageTimer = MAX(b->damageTimer - app.deltaTime, 0);
+
+    if (player->health > 0 &&
+        collision(self->x, self->y, 
+            self->texture->rect.w, self->texture->rect.h, 
+            player->x, player->y, 
+            player->texture->rect.w, player->texture->rect.h))
+    {
+        player->health = 0;
+        player->die(player);
+    }
+
+    stage.boss = self;
 }
 
 static void draw(Entity *self)
 {
+    Boss *b;
 
+    b = (Boss *)self->data;
+
+    blitAtlasImage(self->texture, self->x, self->y, 0, SDL_FLIP_NONE);
+
+    if (b->damageTimer > 0)
+    {
+        SDL_SetTextureBlendMode(self->teture->texture, SDL_BLENDMODE_ADD);
+        blitAtlasImage(self->texture, self->x, self->y, 0, SDL_FLIP_NONE);
+        SDL_SetTextureBlendMode(self->texture->texture, SDL_BLENDMODE_BLEND);
+    }
 }
 
 static void takeDamage(Entity *self, int amount)
 {
+    if (self->y >= 120)
+    {
+        self->health -= amount;
 
+        if (self->health <= 0)
+        {
+            self->die(self);
+        }
+
+        ((Boss *)self->data)->damageTimer = 8;
+    }
 }
 
 static void die(Entity *self)
 {
+    int i, x, y;
 
+    stage.score += 100;
+
+    for (i = 0; i < 25; i++)
+    {
+        x = self->x + (self->texture->rect.w / 2);
+        x -= rand() % self->texture->rect.w;
+        x += rand() % self->texture->rect.w;
+
+        y = self->y + (self->texture->rect.h / 2);
+        y -= rand() % self->texture->rect.h;
+        y += rand() % self->texture->rect.h;
+
+        addExplosion(x, y);
+    }
 }
 
 static Bullet *spawnBossBullet(Entity *self, SDL_Texture *texture,
