@@ -5,6 +5,7 @@
 
 #include "../common.h"
 
+#include "../game/bosses.h"
 #include "../game/bullets.h"
 #include "../game/effects.h"
 #include "../game/entities.h"
@@ -66,6 +67,8 @@ static void logic(void)
 {
 	stage.hasAliens = 0;
 
+	stage.boss = NULL;
+
 	backgroundY += app.deltaTime;
 
 	if (backgroundY >= 0)
@@ -107,7 +110,14 @@ static void logic(void)
 	{
 		clearDeadEntities();
 
-		nextWave();
+		if (stage.waveNum % 10 == 0)
+		{
+			initBoss();
+		}
+		else
+		{
+			nextWave();	
+		}
 	}
 }
 

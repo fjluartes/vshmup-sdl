@@ -4,11 +4,17 @@
 
 #include "../common.h"
 
+#include "../system/draw.h"
 #include "../system/text.h"
 #include "hud.h"
 
+#define BOSS_BAR_LENGTH (SCREEN_WIDTH - 140)
+
 extern Game  game;
 extern Stage stage;
+
+static void drawScoreBar(void);
+static void drawBossBar(void);
 
 void drawHud(void)
 {
@@ -27,4 +33,14 @@ void drawHud(void)
 		sprintf(text, "Highscore: %03d", game.highscores[0].score);
 		drawText(text, SCREEN_WIDTH - 10, 0, 255, 255, 255, TEXT_ALIGN_RIGHT, 0);
 	}
+}
+
+static void drawScoreBar(void)
+{
+
+}
+
+static void drawBossBar(void)
+{
+	
 }
