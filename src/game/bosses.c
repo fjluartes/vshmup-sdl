@@ -152,7 +152,7 @@ static void initBlueBoss(void)
     e->die = die;
 }
 
-static void initBlueBoss(void)
+static void initRedBoss(void)
 {
     Boss   *b;
     Entity *e;
