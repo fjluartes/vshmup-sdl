@@ -2,7 +2,7 @@
  * bosses.c
  */
 
-#include "common.h"
+#include "../common.h"
 
 #include "../game/bullets.h"
 #include "../game/effects.h"
@@ -52,10 +52,10 @@ void initBoss(void)
         case 1:
             initGreenBoss();
             break;
-        case 1:
+        case 2:
             initGreenBoss();
             break;
-        case 1:
+        case 3:
             initGreenBoss();
             break;
         default:
@@ -268,7 +268,7 @@ static void draw(Entity *self)
 
     if (b->damageTimer > 0)
     {
-        SDL_SetTextureBlendMode(self->teture->texture, SDL_BLENDMODE_ADD);
+        SDL_SetTextureBlendMode(self->texture->texture, SDL_BLENDMODE_ADD);
         blitAtlasImage(self->texture, self->x, self->y, 0, SDL_FLIP_NONE);
         SDL_SetTextureBlendMode(self->texture->texture, SDL_BLENDMODE_BLEND);
     }
