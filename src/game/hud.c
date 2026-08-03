@@ -18,6 +18,16 @@ static void drawBossBar(void);
 
 void drawHud(void)
 {
+	drawScoreBar();
+
+	if (stage.boss != NULL)
+	{
+		drawBossBar();
+	}
+}
+
+void drawScoreBar(void)
+{
 	char text[16];
 
 	sprintf(text, "Score: %03d", stage.score);
@@ -35,12 +45,21 @@ void drawHud(void)
 	}
 }
 
-static void drawScoreBar(void)
-{
-
-}
-
 static void drawBossBar(void)
 {
-	
+	double w;
+	Boss  *b;
+
+	b = (Boss *)stage.boss->data;
+
+	w = (1.0 * stage.boss->health) / b->maxHealth;
+
+	w *= BOSS_BAR_LENGTH;
+
+	drawText("Boss", 10, SCREEN_HEIGHT - 60,
+		255, 255, 255, TEXT_ALIGN_LEFT, 0);
+
+	drawRect(125, SCREEN_HEIGHT - 40, w, 25, 255, 0, 0, 192);
+	drawOutlineRect(125, SCREEN_HEIGHT - 40, BOSS_BAR_LENGTH,
+		25, 255, 255, 25, 192);	
 }
