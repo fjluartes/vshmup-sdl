@@ -24,7 +24,7 @@ static void tick(Entity *self);
 static void draw(Entity *self);
 static void takeDamage(Entity *self, int amount);
 static void die(Entity *self);
-static Bullet *spawnBossBullet(Entity *self, SDL_Texture *texture, 
+static Bullet *spawnBossBullet(Entity *self, AtlasImage *texture, 
             float dx, float dy, int xOffset);
 static void fireGreenBossBullets(Entity *self);
 static void fireYellowBossBullets(Entity *self);
@@ -309,7 +309,7 @@ static void die(Entity *self)
     }
 }
 
-static Bullet *spawnBossBullet(Entity *self, SDL_Texture *texture,
+static Bullet *spawnBossBullet(Entity *self, AtlasImage *texture,
                 float dx, float dy, int xOffset)
 {
     Bullet *b;
