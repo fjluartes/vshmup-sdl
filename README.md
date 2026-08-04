@@ -10,12 +10,12 @@ From [Parallel Realities SDL2 tutorial](https://www.parallelrealities.co.uk/tuto
 - Create build.sh, build.bat
 
 ## TODO
-- [x] Bosses
-- [ ] More power-ups
+- [x] More power-ups
 - [ ] Enemy attack patterns (final sequence)
 - [ ] Finishing touches
 
 ## DONE
+- [x] Bosses
 - [x] Enemy attack patterns (full sequence)
 - [x] Return fire
 - [x] Power-ups
