@@ -25,7 +25,7 @@ static void draw(Entity *self);
 static void takeDamage(Entity *self, int amount);
 static void die(Entity *self);
 static Bullet *spawnBossBullet(Entity *self, AtlasImage *texture, 
-            float dx, float dy, int xOffset);
+            double dx, double dy, int xOffset);
 static void fireGreenBossBullets(Entity *self);
 static void fireYellowBossBullets(Entity *self);
 static void fireBlueBossBullets(Entity *self);
@@ -310,7 +310,7 @@ static void die(Entity *self)
 }
 
 static Bullet *spawnBossBullet(Entity *self, AtlasImage *texture,
-                float dx, float dy, int xOffset)
+                double dx, double dy, int xOffset)
 {
     Bullet *b;
     b = spawnBullet(self);
@@ -341,7 +341,7 @@ static void fireYellowBossBullets(Entity *self)
 static void fireBlueBossBullets(Entity *self)
 {
     Bullet *b;
-    float   dx, dy;
+    double  dx, dy;
 
     if (player == NULL) return;
 
